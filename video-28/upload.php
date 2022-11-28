@@ -1,0 +1,30 @@
+<form action="" method="post" enctype="multipart/form-data">
+
+Choose file image
+<input type="file" name="upload">
+<input type="submit" name ="send" value="save">
+</form>
+
+<?php
+
+if (isset($_POST['send'])) {
+
+$file = $_FILES['upload'];
+
+    // var_dump ($_FILES['upload']);
+
+    echo '</br>';
+
+    foreach ($file as $key => $value) {
+        echo $key. '= '.$value;
+        echo '<br>';
+    }
+
+    $name = ($_FILES['upload']['name']);
+    $temp = ($_FILES['upload']['tmp_name']);
+    echo $name. '=' .$temp;
+
+    move_uploaded_file($temp, 'gambar/' .$name);
+}
+
+?>
